@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "bson": "^6.10.3",
+    "bson-objectid": "^2.0.4",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "fnm": "^0.0.0",
+    "http": "^0.0.1-security",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.0",
+    "net-tools": "^0.1.0",
+    "nodejs": "^0.0.0",
+    "socket.io": "^4.8.1"
+  }
+}

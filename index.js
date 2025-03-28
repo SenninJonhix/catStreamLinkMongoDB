@@ -20,11 +20,6 @@ async function run() {
     // Arreglo de usuarios a crear
     const usuarios = [
       {
-        user: "Iker",
-        pwd: "Almi123",
-        roles: [{ role: "readWrite", db: "reto0" }]
-      },
-      {
         user: "Hamza",
         pwd: "Almi123",
         roles: [{ role: "readWrite", db: "reto0" }]
