@@ -17,7 +17,8 @@ async function run() {
     // Seleccionar la base de datos admin para operaciones de usuario
     const adminDb = client.db("admin");
 
-    // Arreglo de usuarios a crear
+
+    // usuario
     const usuarios = [
       {
         user: "Iker",
@@ -51,7 +52,7 @@ async function run() {
       }
     ];
 
-    // Intentar crear usuarios
+    // crear usuarios
     for (const usuario of usuarios) {
       try {
         await adminDb.command({
