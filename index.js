@@ -4,7 +4,7 @@ const path = require('path');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, 'dist')));
 const PORT = 3000;
 
 const uri = "mongodb+srv://reto0:reto0@proyecto0.woexhzb.mongodb.net/";
