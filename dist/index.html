@@ -8,15 +8,14 @@
 </head>
 <body>
 <div class="loader-container" id="loader">
-  <video autoplay muted loop class="background-video">
-    <source src="./media/Vidnoz_MagicAnimate.mp4" type="video/mp4">
-  </video>
+  <div class="candy-river"></div>
   <h1 class="loader-title">OOMPA-LOOMPA TEAM</h1>
   
-  <a href="../vista/index.ejs" class="chocolate-button">
+  <a href="./vista/index.ejs" class="chocolate-button">
     <div class="chocolate-line-vertical"></div>
     <span>ENTRAR</span>
   </a>
+</div>
 </div>
 
 <script>
@@ -43,8 +42,31 @@
     }
   }
   
+  function createLollipops() {
+    const container = document.querySelector('.loader-container');
+    const lollipopCount = 10;
+    
+    for (let i = 0; i < lollipopCount; i++) {
+      const lollipop = document.createElement('div');
+      lollipop.classList.add('lollipop');
+      
+      lollipop.style.left = `${Math.random() * 90 + 5}%`;
+      lollipop.style.top = `${Math.random() * 70 + 5}%`;
+      
+      const size = Math.random() * 30 + 20;
+      lollipop.style.width = `${size}px`;
+      lollipop.style.height = `${size}px`;
+      
+      const duration = Math.random() * 5 + 3;
+      lollipop.style.animationDuration = `${duration}s`;
+      
+      container.appendChild(lollipop);
+    }
+  }
+  
   window.onload = function() {
     createBubbles();
+    createLollipops();
   };
 </script>
 </body>
