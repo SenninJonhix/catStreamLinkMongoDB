@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./index.css">
+
+<title>Fábrica de Chocolate - Oompa-Loompa</title>
 </head>
 <body>
-    <a href="./vista/index.ejs">go to page</a>
-    <h1>OompaLoompa</h1>
+<div class="loader-container" id="loader">
+  <div class="candy-river"></div>
+  <h1 class="loader-title">OOMPA-LOOMPA TEAM</h1>
+</div>
+
+<div class="content">
+  <h1>OompaLoompa</h1>
+</div>
+
+<script>
+
+  function createBubbles() {
+    const container = document.querySelector('.loader-container');
+    const bubbleCount = 30;
+    
+    for (let i = 0; i < bubbleCount; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 50 + 10;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.setProperty('--drift', `${(Math.random() - 0.5) * 200}px`);
+      const duration = Math.random() * 10 + 8;
+      bubble.style.animationDuration = `${duration}s`;
+      bubble.style.animationDelay = `${Math.random() * 5}s`;
+      
+      container.appendChild(bubble);
+    }
+  }
+  
+  function createLollipops() {
+    const container = document.querySelector('.loader-container');
+    const lollipopCount = 10;
+    
+    for (let i = 0; i < lollipopCount; i++) {
+      const lollipop = document.createElement('div');
+      lollipop.classList.add('lollipop');
+      lollipop.style.left = `${Math.random() * 90 + 5}%`;
+      lollipop.style.top = `${Math.random() * 70 + 5}%`;
+      const size = Math.random() * 30 + 20;
+      lollipop.style.width = `${size}px`;
+      lollipop.style.height = `${size}px`;
+      const duration = Math.random() * 5 + 3;
+      lollipop.style.animationDuration = `${duration}s`;
+      
+      container.appendChild(lollipop);
+    }
+  }
+  
+  function showContent() {
+    setTimeout(() => {
+      document.getElementById('loader').style.opacity = '0';
+      document.getElementById('loader').style.transition = 'opacity 1.5s ease';
+      
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+        document.querySelector('.content').style.display = 'block';
+      }, 1500);
+    }, 12000); 
+  }
+  
+  window.onload = function() {
+    createBubbles();
+    createLollipops();
+    showContent();
+  };
+</script>
 </body>
 </html>
