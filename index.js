@@ -86,6 +86,10 @@ app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login/registro.html'));
 });
 
+app.get('/pantalla', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'gato/pantalla.html'));
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
