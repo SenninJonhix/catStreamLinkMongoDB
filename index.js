@@ -74,12 +74,11 @@ app.post('/enviar-mensaje', async (req, res) => {
   }
 });
 
-// Ruta de prueba
+
 app.get('/', (req, res) => {
-  res.send('Servidor de mensajes activo');
+  res.render('../vista/index.ejs');
 });
 
-// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
