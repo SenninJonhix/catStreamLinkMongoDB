@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilo.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2 id="form-title">Login</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+                <p>¿No tienes cuenta? <a href="#" id="toggleForm">Regístrate</a></p>
+            </form>
+            <form id="registerForm" class="hidden">
+                <input type="text" id="newUsername" placeholder="Usuario" required>
+                <input type="password" id="newPassword" placeholder="Contraseña" required>
+                <input type="email" id="email" placeholder="Correo Electrónico" required>
+                <button type="submit">Registrarse</button>
+                <p>¿Ya tienes cuenta? <a href="#" id="toggleFormBack">Inicia Sesión</a></p>
+            </form>
+        </div>
+    </div>
+    <div>
+        <span>
+            <video width="520" height="440" autoplay loop muted>
+                <source src="oompa.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de videos.
+            </video>
+        </span>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("loginForm");
+            const registerForm = document.getElementById("registerForm");
+            const toggleForm = document.getElementById("toggleForm");
+            const toggleFormBack = document.getElementById("toggleFormBack");
+            const formTitle = document.getElementById("form-title");
+
+            toggleForm.addEventListener("click", function (e) {
+                e.preventDefault();
+                loginForm.classList.add("hidden");
+                registerForm.classList.remove("hidden");
+                formTitle.textContent = "Registro";
+            });
+
+            toggleFormBack.addEventListener("click", function (e) {
+                e.preventDefault();
+                registerForm.classList.add("hidden");
+                loginForm.classList.remove("hidden");
+                formTitle.textContent = "Iniciar Sesión";
+            });
+        });
+    </script>
+</body>
+</html>
