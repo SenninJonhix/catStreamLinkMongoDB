@@ -76,7 +76,7 @@ app.post('/enviar-mensaje', async (req, res) => {
 
 
 app.get('/', (req, res) => {
-  res.render('../vista/index.ejs');
+  res.render('index');
 });
 
 app.listen(PORT, () => {
