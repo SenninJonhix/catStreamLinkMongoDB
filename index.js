@@ -1,8 +1,10 @@
 const express = require('express');
+const app = express();
+const path = require('path');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser');
+app.use(express.static(path.join(__dirname, 'public')));
 
-const app = express();
 const PORT = 3000;
 
 const uri = "mongodb+srv://reto0:reto0@proyecto0.woexhzb.mongodb.net/";
@@ -74,11 +76,12 @@ app.post('/enviar-mensaje', async (req, res) => {
   }
 });
 
-
+// Ruta de prueba
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('../vista/index.ejs');
 });
 
+// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
