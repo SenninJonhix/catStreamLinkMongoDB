@@ -90,4 +90,4 @@ exports.control_login =  async (req, res) => {
       } catch (error) {
         res.status(500).json({ message: "Error during login", error: error.message });
       }
-    };
+};

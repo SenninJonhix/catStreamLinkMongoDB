@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser');
-const rutasUsuarios = require('./rutas/logs');
+const users = require('./rutas/logs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'vista')));

@@ -35,7 +35,7 @@
             const formTitle = document.getElementById("form-title");
             
 
-            toggleForm.addEventListener("click", function (e) {
+           toggleForm.addEventListener("click", function (e) {
                 e.preventDefault();
                 modelologin.classList.add("hidden");
                 modeloregistro.classList.remove("hidden");
@@ -43,7 +43,7 @@
             });
             
 
-            toggleFormBack.addEventListener("click", function (e) {
+           /* toggleFormBack.addEventListener("click", function (e) {
                 e.preventDefault();
                 modeloregistro.classList.add("hidden");
                 modelologin.classList.remove("hidden");
@@ -67,9 +67,8 @@
                 const email = document.getElementById("email").value;
                 
                 console.log("Datos de registro:", { newUsername, newPassword, email });
-            });
+            });*/
         });
     </script>
-    <script src="../../controlador/controlador.js"></script>
 </body>
 </html>
