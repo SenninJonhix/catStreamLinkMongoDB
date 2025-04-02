@@ -21,7 +21,6 @@ exports.control_detalle = async (req, res) => {
   }
 };
 
-// Crear un nuevo usuario
 exports.control_crear = async (req, res) => {
   try {
     const nuevoUsuario = new modelo(req.body);
@@ -59,3 +58,36 @@ exports.control_eliminar = async (req, res) => {
     res.status(500).json({ message: "Error deleting user", error: error.message });
   }
 };
+
+exports.control_login =  async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        const usuario = await modelo.findOne({ username });
+        if (!usuario) {
+          return res.status(401).json({ message: "Invalid username or password" });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, usuario.password);
+        if (!isPasswordValid) {
+          return res.status(401).json({ message: "Invalid username or password" });
+        }
+
+        const token = jwt.sign(
+          { id: usuario._id, username: usuario.username },
+          process.env.JWT_SECRET || 'tu_clave_secreta',
+          { expiresIn: '24h' }
+        );
+        res.status(200).json({
+          message: "Login successful",
+          token,
+          user: {
+            id: usuario._id,
+            username: usuario.username,
+            email: usuario.email
+          }
+        });
+      } catch (error) {
+        res.status(500).json({ message: "Error during login", error: error.message });
+      }
+    };

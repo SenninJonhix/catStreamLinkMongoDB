@@ -29,50 +29,7 @@ async function conectarMongoDB() {
     console.error("Error al conectar a MongoDB:", error);
     throw error;
   }
-}
-
-app.use('/api/usuarios', rutasUsuarios);
-
-app.post('/enviar-mensaje', async (req, res) => {
-  let conexionAbierta = false;
-  try {
-    const { remitente, destinatario, contenido } = req.body;
-
-    if (!remitente || !destinatario || !contenido) {
-      return res.status(400).json({
-        error: "Faltan campos obligatorios"
-      });
-    }
- 
-    const db = await conectarMongoDB();
-    conexionAbierta = true;
-    const mensajesCollection = db.collection("mensajes");
- 
-    const mensaje = {
-      remitente: remitente,
-      destinatario: destinatario,
-      contenido: contenido,
-      fecha: new Date(),
-      leido: false
-    };
-
-    const resultado = await mensajesCollection.insertOne(mensaje);
-
-    res.status(201).json({
-      mensaje: "Mensaje enviado exitosamente",
-      id: resultado.insertedId
-    });
-  } catch (error) {
-    console.error("Error al procesar mensaje:", error);
-    res.status(500).json({
-      error: "Error interno del servidor"
-    });
-  } finally {
-    if (conexionAbierta) {
-      await client.close();
-    }
-  }
-});
+};
 
 app.get('/', (req, res) => {
   res.render('../vista/index.ejs');

@@ -10,50 +10,66 @@
     <div class="container">
         <div class="form-box">
             <h2 id="form-title">Login</h2>
-            <form id="loginForm">
+            <form id="modelologin">
                 <input type="text" id="username" placeholder="Usuario" required>
                 <input type="password" id="password" placeholder="Contraseña" required>
                 <button type="submit">Ingresar</button>
-                <p>¿No tienes cuenta? <a href="#" id="toggleForm">Regístrate</a></p>
+                <p>¿No tienes cuenta? <a href="#" id="control_login">Regístrate</a></p>
             </form>
-            <form id="registerForm" class="hidden">
+            <form id="control_crear" class="hidden">
                 <input type="text" id="newUsername" placeholder="Usuario" required>
                 <input type="password" id="newPassword" placeholder="Contraseña" required>
                 <input type="email" id="email" placeholder="Correo Electrónico" required>
                 <button type="submit">Registrarse</button>
-                <p>¿Ya tienes cuenta? <a href="#" id="toggleFormBack">Inicia Sesión</a></p>
+                <p>¿Ya tienes cuenta? <a href="./registro.html" id="control_crear">Inicia Sesión</a></p>
             </form>
         </div>
     </div>
-    <div>
-        <span>
-            <video width="520" height="440" autoplay loop muted>
-                <source src="oompa.mp4" type="video/mp4">
-            </video>
-        </span>
-    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const loginForm = document.getElementById("loginForm");
-            const registerForm = document.getElementById("registerForm");
-            const toggleForm = document.getElementById("toggleForm");
+            const modelologin = document.getElementById("modelologin");
+            const modeloregistro = document.getElementById("control_crear");
+            const toggleForm = document.getElementById("control_login");
             const toggleFormBack = document.getElementById("toggleFormBack");
             const formTitle = document.getElementById("form-title");
+            
 
             toggleForm.addEventListener("click", function (e) {
                 e.preventDefault();
-                loginForm.classList.add("hidden");
-                registerForm.classList.remove("hidden");
+                modelologin.classList.add("hidden");
+                modeloregistro.classList.remove("hidden");
                 formTitle.textContent = "Registro";
             });
+            
 
             toggleFormBack.addEventListener("click", function (e) {
                 e.preventDefault();
-                registerForm.classList.add("hidden");
-                loginForm.classList.remove("hidden");
+                modeloregistro.classList.add("hidden");
+                modelologin.classList.remove("hidden");
                 formTitle.textContent = "Iniciar Sesión";
+            });
+            
+
+            modelologin.addEventListener("submit", function(e) {
+                e.preventDefault();
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+                
+                console.log("Datos de login:", { username, password });
+            });
+            
+
+            modeloregistro.addEventListener("submit", function(e) {
+                e.preventDefault();
+                const newUsername = document.getElementById("newUsername").value;
+                const newPassword = document.getElementById("newPassword").value;
+                const email = document.getElementById("email").value;
+                
+                console.log("Datos de registro:", { newUsername, newPassword, email });
             });
         });
     </script>
+    <script src="../../controlador/controlador.js"></script>
 </body>
 </html>
